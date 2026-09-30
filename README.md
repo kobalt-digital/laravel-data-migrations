@@ -6,19 +6,6 @@ Data migrations live in their own folder, `database/data-migrations` by default,
 
 ## Installation
 
-The package is not on Packagist, so add the repository to your project's `composer.json` first:
-
-```json
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "git@github.com:kobalt-digital/laravel-data-migrations.git"
-    }
-]
-```
-
-Then require it:
-
 ```bash
 composer require kobaltdigital/laravel-data-migrations
 ```
