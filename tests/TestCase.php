@@ -14,6 +14,7 @@ class TestCase extends Orchestra
 
         $files->deleteDirectory(database_path('data-migrations'));
         $files->deleteDirectory(database_path('custom-data'));
+        $files->deleteDirectory(database_path('guarded-data'));
         $files->deleteDirectory(base_path('stubs'));
 
         parent::tearDown();

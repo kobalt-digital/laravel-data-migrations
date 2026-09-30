@@ -9,12 +9,18 @@ class DataMigrationsServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $publishedConfig = $this->app['config']->get('data-migrations');
+
         $this->mergeConfigFrom(__DIR__.'/../config/data-migrations.php', 'data-migrations');
+
+        if (is_array($publishedConfig) && ! array_key_exists('run_with_migrate', $publishedConfig)) {
+            $this->app['config']->set('data-migrations.run_with_migrate', false);
+        }
     }
 
     public function boot(): void
     {
-        if (config('data-migrations.run_with_migrate')) {
+        if (config('data-migrations.run_with_migrate', false)) {
             $this->loadMigrationsFrom(DataMigrations::path());
         }
 

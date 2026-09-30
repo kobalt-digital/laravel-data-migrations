@@ -35,6 +35,12 @@ php artisan make:data-migration fill_zipcode_formats
 
 This creates `database/data-migrations/2026_09_30_141516_fill_zipcode_formats.php`. Fill in `up()` and `down()` like any other migration and run `php artisan migrate`.
 
+To keep data migrations out of `php artisan migrate`, set `DATA_MIGRATIONS_RUN_WITH_MIGRATE=false` and run them on demand:
+
+```bash
+php artisan migrate --path=database/data-migrations
+```
+
 ## Configuration
 
 Publish the config file to change the defaults:
@@ -47,7 +53,7 @@ php artisan vendor:publish --tag=data-migrations-config
 | --- | --- | --- |
 | `folder` | `data-migrations` | Folder inside `database/` that holds the data migrations. Also settable with `DATA_MIGRATIONS_FOLDER`. |
 | `path` | `null` | Absolute path to store data migrations outside `database/`. Takes precedence over `folder`. |
-| `run_with_migrate` | `true` | Register the folder with Laravel's migrator so `php artisan migrate` runs data migrations. Disable it to run them only on demand with `php artisan migrate --path=database/data-migrations`. |
+| `run_with_migrate` | `true` | Register the folder with Laravel's migrator so `php artisan migrate`, `migrate:status` and `migrate:rollback` include data migrations. Also settable with `DATA_MIGRATIONS_RUN_WITH_MIGRATE`. A published config without this key counts as `false`. |
 | `stub` | `null` | Absolute path to a custom stub for `make:data-migration`. |
 
 ### Custom stub

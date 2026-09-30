@@ -37,9 +37,13 @@ return [
     | table and run in timestamp order, so a data migration always runs after
     | the schema migrations it depends on.
     |
+    | When disabled, or when this key is removed from a published config,
+    | data migrations only run on demand with
+    | `php artisan migrate --path=database/data-migrations`.
+    |
     */
 
-    'run_with_migrate' => true,
+    'run_with_migrate' => env('DATA_MIGRATIONS_RUN_WITH_MIGRATE', true),
 
     /*
     |--------------------------------------------------------------------------
