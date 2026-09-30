@@ -1,0 +1,61 @@
+{
+    "name": "kobaltdigital/laravel-data-migrations",
+    "description": "Keep data migrations apart from schema migrations in Laravel",
+    "keywords": [
+        "Kobalt",
+        "laravel",
+        "migrations",
+        "data-migrations"
+    ],
+    "homepage": "https://github.com/kobalt-digital/laravel-data-migrations",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arne van Hoorn",
+            "email": "arne@kobaltdigital.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "illuminate/filesystem": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kobalt\\DataMigrations\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kobalt\\DataMigrations\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kobalt\\DataMigrations\\DataMigrationsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
